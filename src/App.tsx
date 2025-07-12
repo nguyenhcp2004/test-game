@@ -5,18 +5,12 @@ import { ethers } from "ethers";
 import PhaserPetGame from "pet-rising-game";
 
 function App() {
-  const [speed, setSpeed] = useState(50);
-  const [activity, setActivity] = useState<
-    "walk" | "sleep" | "idleplay" | "chew"
-  >("walk");
   const [keyPair, setKeyPair] = useState<{
     privateKey: string;
     publicKey: string;
   } | null>(null);
   const [wallet, setWallet] = useState<ethers.Wallet | null>(null);
 
-  const increaseSpeed = () => setSpeed((prev) => Math.min(prev + 25, 300));
-  const decreaseSpeed = () => setSpeed((prev) => Math.max(prev - 25, 25));
   useEffect(() => {
     const generateKeyPair = async () => {
       const wallet = ethers.Wallet.createRandom();
