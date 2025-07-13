@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import "./App.css";
-
 import { ethers } from "ethers";
-import PhaserPetGame from "pet-rising-game";
+
+// Lazy load PhaserPetGame
+const PhaserPetGame = lazy(() => import("pet-rising-game"));
 
 function App() {
   const [keyPair, setKeyPair] = useState<{
@@ -38,13 +39,15 @@ function App() {
       <div style={{ marginTop: "20px" }}>
         <p style={{ fontSize: "14px", color: "#666" }}>
           Install: <code>npm install pet-rising-game</code>
-        </p>{" "}
-        <PhaserPetGame
-          publicKey={keyPair?.publicKey || ""}
-          signMessage={(message) =>
-            wallet?.signMessage(message) || Promise.resolve("")
-          }
-        />
+        </p>
+        <Suspense fallback={<div>Loading game assets...</div>}>
+          <PhaserPetGame
+            publicKey={keyPair?.publicKey || ""}
+            signMessage={(message) =>
+              wallet?.signMessage(message) || Promise.resolve("")
+            }
+          />
+        </Suspense>
       </div>
     </>
   );
