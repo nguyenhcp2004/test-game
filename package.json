@@ -1,6 +1,6 @@
 {
   "name": "test-phaser-game",
-  "homepage": "https://nguyenhcp2004.github,io/test-game/",
+  "homepage": "https://nguyenhcp2004.github.io/test-game/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "ethers": "^6.15.0",
-    "pet-rising-game": "^1.3.6",
+    "pet-rising-game": "^1.3.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
